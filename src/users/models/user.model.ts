@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { Order } from 'src/order/models/order.model';
 
 interface UserAttr {
   name: string;
@@ -63,6 +64,6 @@ export class User extends Model<User, UserAttr> {
   })
   is_active: boolean;
 
-  // @HasMany(() => Product)
-  //   products: Product[];
+  @HasMany(() => Order)
+  order: Order[];
 }
