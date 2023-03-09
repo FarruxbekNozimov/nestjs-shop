@@ -48,31 +48,36 @@ export class UsersController {
 
   @ApiOperation({ summary: 'Delete user' })
   @Delete(':id')
-  async deleteUser(@Param('id') id: number): Promise<void> {
-    await this.usersService.deleteUser(id);
+  async deleteUser(@Param('id') id: number) {
+    const user = await this.usersService.deleteUser(id);
+    return user;
   }
 
   @ApiOperation({ summary: 'Admin role to user' })
-  @Post(':id')
-  async adminUser(@Param('id') id: number): Promise<void> {
-    await this.usersService.adminUser(id);
+  @Post('admin/:id')
+  async adminUser(@Param('id') id: number) {
+    const user = await this.usersService.adminUser(id);
+    return user;
   }
 
   @ApiOperation({ summary: 'Disable admin role to user' })
-  @Post(':id')
-  async userUser(@Param('id') id: number): Promise<void> {
-    await this.usersService.userUser(id);
+  @Post('noadmin/:id')
+  async userUser(@Param('id') id: number) {
+    const user = await this.usersService.userUser(id);
+    return user;
   }
 
   @ApiOperation({ summary: 'Active user' })
-  @Post(':id')
-  async activeUser(@Param('id') id: number): Promise<void> {
-    await this.usersService.activeUser(id);
+  @Post('active/:id')
+  async activeUser(@Param('id') id: number) {
+    const user = await this.usersService.activeUser(id);
+    return user;
   }
 
   @ApiOperation({ summary: 'Deactive user' })
-  @Post(':id')
-  async deactiveUser(@Param('id') id: number): Promise<void> {
-    await this.usersService.deactiveUser(id);
+  @Post('deactive/:id')
+  async deactiveUser(@Param('id') id: number) {
+    const user = await this.usersService.deactiveUser(id);
+    return user;
   }
 }

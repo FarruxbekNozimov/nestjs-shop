@@ -9,15 +9,21 @@ import { ActivateUserDto } from './dto/activate-user.dto';
 export class UsersService {
   constructor(@InjectModel(User) private readonly userRepo: typeof User) {}
   async findAll(): Promise<User[]> {
-    return this.userRepo.findAll();
+    const users = await this.userRepo.findAll({ include: { all: true } });
+    return users;
   }
 
   async findOne(id: number): Promise<User> {
-    return this.userRepo.findByPk(id);
+    const user = await this.userRepo.findByPk(id);
+    return user;
   }
 
   async findByEmail(email: string): Promise<User> {
-    return this.userRepo.findOne({ where: { email } });
+    const user = await this.userRepo.findOne({
+      where: { email },
+      include: { all: true },
+    });
+    return user;
   }
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {
@@ -25,12 +31,13 @@ export class UsersService {
   }
 
   async updateUser(id: number, updateUserDto: UpdateUserDto) {
-    return this.userRepo.update(updateUserDto, { where: { id } });
+    const user = await this.userRepo.update(updateUserDto, { where: { id } });
+    return user;
   }
 
-  async deleteUser(id: number): Promise<void> {
-    const user = await this.findOne(id);
-    await user.destroy();
+  async deleteUser(id: number) {
+    const user = await this.userRepo.destroy({ where: { id } });
+    return user;
   }
 
   async adminUser(id: number) {

@@ -1,4 +1,7 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateEquipmentDto } from './create-equipment.dto';
-
-export class UpdateEquipmentDto extends PartialType(CreateEquipmentDto) {}
+export class UpdateEquipmentDto {
+  name?: string;
+  price?: string;
+  image?: string;
+  description?: string;
+  is_active?: boolean;
+}

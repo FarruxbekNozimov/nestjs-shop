@@ -1,17 +1,15 @@
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
-interface UserAttr {
+interface EquipmentAttr {
   name: string;
-  email: string;
-  password: string;
-  phone_number: string;
-  location: string;
-  is_admin: boolean;
+  price: string;
+  image: string;
+  description: string;
   is_active: boolean;
 }
 
-@Table({ tableName: 'users' })
-export class User extends Model<User, UserAttr> {
+@Table({ tableName: 'equipment' })
+export class Equipment extends Model<Equipment, EquipmentAttr> {
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -27,35 +25,21 @@ export class User extends Model<User, UserAttr> {
 
   @Column({
     type: DataType.STRING,
-    unique: true,
     allowNull: false,
   })
-  email: string;
+  price: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  password: string;
+  image: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  phone_number: string;
-
-  @Column({
-    type: DataType.STRING,
-    allowNull: false,
-  })
-  location: string;
-
-  @Column({
-    type: DataType.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-  })
-  is_admin: boolean;
+  description: string;
 
   @Column({
     type: DataType.BOOLEAN,

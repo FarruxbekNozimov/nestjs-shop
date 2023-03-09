@@ -6,10 +6,8 @@ export class UpdateUserDto {
   name?: string;
 
   @ApiProperty({ example: 'tosh@gmail.com' })
-  @IsEmail()
   email?: string;
 
   @ApiProperty({ example: 'Uzbek!$t0n' })
-  @IsStrongPassword()
   password?: string;
 }
