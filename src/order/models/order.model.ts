@@ -17,7 +17,7 @@ interface OrderAttr {
   total_price: number;
 }
 
-@Table({ tableName: 'order' })
+@Table({ tableName: 'orders' })
 export class Order extends Model<Order, OrderAttr> {
   @Column({
     type: DataType.INTEGER,
@@ -27,22 +27,23 @@ export class Order extends Model<Order, OrderAttr> {
   id: number;
 
   @ForeignKey(() => Equipment)
-  @Column({ type: DataType.DECIMAL })
+  @Column({ type: DataType.INTEGER })
   equipment_id: number;
 
   @BelongsTo(() => Equipment)
-  equipment: [];
+  equipment: Equipment[];
 
   @ForeignKey(() => User)
-  @Column({ type: DataType.DECIMAL })
+  @Column({ type: DataType.INTEGER })
   user_id: number;
 
   @BelongsTo(() => User)
-  user: [];
+  user: User[];
 
   @Column({
     type: DataType.DATE,
     allowNull: false,
+    defaultValue: Date.now(),
   })
   order_date: Date;
 

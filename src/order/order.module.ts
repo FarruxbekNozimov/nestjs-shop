@@ -7,7 +7,7 @@ import { User } from 'src/users/models/user.model';
 import { Equipment } from 'src/equipment/models/equipment.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Order, User, Equipment])],
+  imports: [SequelizeModule.forFeature([Order])],
   controllers: [OrderController],
   providers: [OrderService],
 })

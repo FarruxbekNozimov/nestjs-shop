@@ -20,8 +20,4 @@ export class CreateEquipmentDto {
   @ApiProperty({ example: 'User1', description: 'Foydalanuvchi ismi' })
   @IsNotEmpty()
   description: string;
-
-  @ApiProperty({ example: 'User1', description: 'Foydalanuvchi ismi' })
-  @IsBoolean()
-  is_active: boolean;
 }

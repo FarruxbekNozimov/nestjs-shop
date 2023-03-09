@@ -3,5 +3,4 @@ export class UpdateEquipmentDto {
   price?: string;
   image?: string;
   description?: string;
-  is_active?: boolean;
 }
