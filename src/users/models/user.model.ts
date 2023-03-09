@@ -49,6 +49,7 @@ export class User extends Model<User, UserAttr> {
   @Column({
     type: DataType.BOOLEAN,
     allowNull: false,
+    defaultValue: false,
   })
   is_admin: boolean;
 

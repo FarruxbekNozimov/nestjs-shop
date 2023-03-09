@@ -4,6 +4,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { UsersModule } from './users/users.module';
 import { EquipmentModule } from './equipment/equipment.module';
 import { User } from './users/models/user.model';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { User } from './users/models/user.model';
     }),
     UsersModule,
     EquipmentModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
